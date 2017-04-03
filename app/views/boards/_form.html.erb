@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :visibility %>
-    <%= form.text_field :visibility, id: :board_visibility %>
+    <%= f.label :visibility %>
+    <%= f.select :visibility, visibility_options, {}, id: :board_visibility %>
   </div>
 
   <div class="field">
