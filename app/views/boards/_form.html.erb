@@ -1,32 +1,26 @@
 <%= form_with(model: board, local: true) do |form| %>
   <% if board.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(board.errors.count, "error") %> prohibited this board from being saved:</h2>
-
-      <ul>
-      <% board.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="alert alert-danger">
+      <strong>Error:</strong> <%= board.errors.full_messages.to_sentence %>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :board_name %>
+    <%= form.text_field :name, id: :board_name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :visibility %>
-    <%= f.select :visibility, visibility_options, {}, id: :board_visibility %>
+  <div class="form-group">
+    <%= form.label :visibility %>
+    <%= form.select :visibility, visibility_options, {}, id: :board_visibility, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :favorite %>
-    <%= form.check_box :favorite, id: :board_favorite %>
+  <div class="checkbox">
+    <%= form.label :favorite do %>
+      <%= form.check_box :favorite, id: :board_favorite %> Favorite
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit class: "btn btn-default" %>
+  <%= link_to 'Back', boards_path %>
 <% end %>
