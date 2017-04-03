@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  visibility: MyString
+  visibility: private
   favorite: false
 
 two:
   name: MyString
-  visibility: MyString
+  visibility: public
   favorite: false
