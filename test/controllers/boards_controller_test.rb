@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class BoardsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @board = boards(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
