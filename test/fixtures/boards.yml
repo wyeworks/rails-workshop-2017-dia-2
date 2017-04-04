@@ -4,8 +4,10 @@ one:
   name: MyString
   visibility: private
   favorite: false
+  user: one
 
 two:
   name: MyString
   visibility: public
   favorite: false
+  user: two
