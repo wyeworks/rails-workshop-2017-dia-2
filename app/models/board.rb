@@ -3,4 +3,5 @@ class Board < ApplicationRecord
   validates :visibility, inclusion: { in: %w(public private) }
 
   belongs_to :user
+  has_many :lists, dependent: :destroy
 end
