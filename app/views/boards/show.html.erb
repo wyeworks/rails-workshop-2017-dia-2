@@ -6,6 +6,16 @@
 
 <div class="row">
   <%= render partial: 'list', collection: @lists %>
+
+  <div class="col-xs-12 col-sm-3">
+    <div class="panel panel-default">
+      <%= link_to new_board_list_path(@board) do %>
+        <div class="panel-body">
+          <h3 class="panel-title">Create new list...</h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <%= link_to 'Back', boards_path %>
