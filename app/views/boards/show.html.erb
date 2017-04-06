@@ -1,19 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h3><%= @board.name %>
+  <span class="label label-info pull-right"><%= @board.visibility %></span>
+</h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @board.name %>
-</p>
+<hr/>
 
-<p>
-  <strong>Visibility:</strong>
-  <%= @board.visibility %>
-</p>
+<div class="row">
+  <%= render partial: 'list', collection: @lists %>
+</div>
 
-<p>
-  <strong>Favorite:</strong>
-  <%= @board.favorite %>
-</p>
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
