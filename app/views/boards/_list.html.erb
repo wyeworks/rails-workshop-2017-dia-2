@@ -3,5 +3,20 @@
     <div class="panel-body">
       <h3 class="panel-title"><%= list.name %></h3>
     </div>
+
+    <ul class="list-group">
+      <% list.cards.each do |card| %>
+        <li class="list-group-item"><%= card.title %></li>
+      <% end %>
+    </ul>
+
+    <div class="panel-footer">
+      <%= form_with(model: [list, Card.new]) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :title, class: "form-control", placeholder: "Add a new card", required: true %>
+        </div>
+        <%= f.submit class: "btn btn-default btn-sm" %>
+      <% end %>
+    </div>
   </div>
 </div>
