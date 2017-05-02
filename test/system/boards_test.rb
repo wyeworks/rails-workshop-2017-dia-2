@@ -16,4 +16,19 @@ class BoardsTest < ApplicationSystemTestCase
 
     assert_selector "h1", text: "Boards"
   end
+
+  test "creating a new board" do
+    visit boards_url
+
+    click_on "Create new board..."
+
+    fill_in "Name", with: "My Board"
+    select "Private", from: "Visibility"
+    check "Favorite"
+
+    click_on "Create Board"
+
+    assert_selector "h3", text: "My Board"
+    assert_selector "span.label", text: "private"
+  end
 end
