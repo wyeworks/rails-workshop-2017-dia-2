@@ -32,7 +32,7 @@ class BoardsTest < ApplicationSystemTestCase
     assert_selector "span.label", text: "private"
   end
 
-  test "creating a list" do
+  test "creating a list and the first card" do
     board = boards(:one)
     visit board_url(board)
 
@@ -42,5 +42,12 @@ class BoardsTest < ApplicationSystemTestCase
     click_on "Create List"
 
     assert_selector "h3.panel-title", text: "TODO"
+
+    within "div.panel", text: "TODO" do
+      fill_in "card[title]", with: "A thing to be done"
+      click_on "Create Card"
+
+      assert_selector "ul.list-group li", text: "A thing to be done"
+    end
   end
 end
