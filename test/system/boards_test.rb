@@ -31,4 +31,16 @@ class BoardsTest < ApplicationSystemTestCase
     assert_selector "h3", text: "My Board"
     assert_selector "span.label", text: "private"
   end
+
+  test "creating a list" do
+    board = boards(:one)
+    visit board_url(board)
+
+    click_on "Create new list..."
+
+    fill_in "Name", with: "TODO"
+    click_on "Create List"
+
+    assert_selector "h3.panel-title", text: "TODO"
+  end
 end
