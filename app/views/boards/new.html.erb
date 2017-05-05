@@ -6,3 +6,12 @@
     <%= render 'form', board: @board %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <div class="page-header">
+      <h3>... or import a board from Trello</h3>
+    </div>
+    <%= render 'import_form', board: @board, trello_boards: @trello_boards %>
+  </div>
+</div>

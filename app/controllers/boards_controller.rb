@@ -16,6 +16,9 @@ class BoardsController < ApplicationController
   # GET /boards/new
   def new
     @board = Board.new
+
+    importer = TrelloBoardsImporter.init_for_user(current_user)
+    @trello_boards = importer.boards
   end
 
   # GET /boards/1/edit

@@ -1,0 +1,8 @@
+<%= form_with do |f| %>
+  <div class="form-group">
+    <%= f.label "Trello Board ID", for: "trello_board_id" %>
+    <%= f.select :trello_board_id, trello_boards_options(trello_boards), {}, class: "form-control", id: "trello_board_id" %>
+  </div>
+
+  <%= f.submit 'Import', class: "btn btn-default" %>
+<% end %>
