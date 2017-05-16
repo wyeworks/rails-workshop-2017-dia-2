@@ -1,0 +1,73 @@
+$darkish: #4d4d4d;
+$greyish: #f5f5f5;
+$whitish: #f6f6f6;
+
+//theme-colors (use one)
+$theme-lightblue: #00aecc; //lightblue
+$theme-redish: #b44431; //redish
+$theme-blue: #0079bf; //blue
+
+$main-background: $theme-lightblue;
+$main-color: $whitish;
+$list-color: $darkish;
+$list-background: $greyish;
+
+$nav-background: darken($main-background, 10%);
+$nav-color: lighten($nav-background, 30%);
+$nav-color-hover: lighten($nav-color, 20%);
+
+body {
+  background-color: $main-background;
+  color: $main-color;
+}
+
+.navbar-default {
+  background-color: $nav-background;
+  color: $nav-color;
+  border: none;
+
+  .navbar-brand {
+    color: $nav-color;
+
+    &:hover {
+      color: $nav-color-hover;
+    }
+  }
+
+  .navbar-nav > li > a {
+    color: $nav-color;
+
+    &:hover {
+      color: $nav-color-hover;
+    }
+  }
+}
+
+.panel-title {
+  color: $list-color;
+}
+
+.panel-body {
+  background-color: $list-background;
+}
+
+.list-group-item {
+  background-color: $list-background;
+  color: $list-color;
+}
+
+.text-info {
+  color: $nav-color;
+}
+
+form input {
+  color: $darkish;
+}
+
+a {
+  color: $greyish;
+
+  &:hover {
+    color: $darkish;
+  }
+}
