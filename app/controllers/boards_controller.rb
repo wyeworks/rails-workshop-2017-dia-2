@@ -65,6 +65,17 @@ class BoardsController < ApplicationController
     end
   end
 
+  def import
+    importer = TrelloBoardsImporter.init_for_user(current_user)
+    @board = importer.import(trello_board_id_param)
+
+    current_user.boards << @board
+
+    @board.save!
+
+    redirect_to @board, notice: 'Board was successfully updated.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
@@ -74,5 +85,9 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:name, :visibility, :favorite)
+    end
+
+    def trello_board_id_param
+      params.require(:trello_board_id)
     end
 end

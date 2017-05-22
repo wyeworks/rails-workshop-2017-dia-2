@@ -17,7 +17,27 @@ class TrelloBoardsImporter
     me.boards
   end
 
+  def import(trello_board_id)
+    trello_board = trello_client.find('board', trello_board_id)
+
+    board = Board.new(name: trello_board.name, visibility: 'public')
+
+    trello_board.lists.each do |trello_list|
+      list = board.lists.build(name: trello_list.name)
+
+      import_cards(trello_list, list)
+    end
+
+    board
+  end
+
   private
+
+  def import_cards(trello_list, list)
+    trello_list.cards.each do |trello_card|
+      list.cards.build(title: trello_card.name)
+    end
+  end
 
   def trello_client
     @trello_client ||= Trello::Client.new(
