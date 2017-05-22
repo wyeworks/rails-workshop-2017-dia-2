@@ -1,0 +1,20 @@
+<%= form_with(model: user, local: true, method: :put) do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <strong>Error:</strong> <%= user.errors.full_messages.to_sentence %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :developer_public_key %>
+    <%= form.text_field :developer_public_key, id: :user_developer_public_key, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :member_token %>
+    <%= form.text_field :member_token, id: :user_member_token, class: "form-control" %>
+  </div>
+
+  <%= form.submit 'Save', class: "btn btn-default" %>
+  <%= link_to 'Back', boards_path %>
+<% end %>
