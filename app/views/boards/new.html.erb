@@ -12,6 +12,12 @@
     <div class="page-header">
       <h3>... or import a board from Trello</h3>
     </div>
-    <%= render 'import_form', board: @board, trello_boards: @trello_boards %>
+
+    <% unless @trello_importer_error %>
+      <%= render 'import_form', board: @board, trello_boards: @trello_boards %>
+    <% else %>
+      If you want to import boards from Trello, please provide your account keys in your
+      <%= link_to "Account Settings page", edit_user_path %>
+    <% end %>
   </div>
 </div>

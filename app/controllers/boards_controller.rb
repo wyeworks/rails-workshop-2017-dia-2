@@ -17,8 +17,12 @@ class BoardsController < ApplicationController
   def new
     @board = Board.new
 
-    importer = TrelloBoardsImporter.init_for_user(current_user)
-    @trello_boards = importer.boards
+    begin
+      importer = TrelloBoardsImporter.init_for_user(current_user)
+      @trello_boards = importer.boards
+    rescue Trello::Error
+      @trello_importer_error = true
+    end
   end
 
   # GET /boards/1/edit
