@@ -7,6 +7,8 @@
 one:
   email: 'one@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'MyPassword') %>
+  developer_public_key: b05b009937c6154ab53352a7ce212488
+  member_token: 1488d6f5efd297ffdde0f4fbef576ad4ea2e992496dfa9ff87f8a97582ad3680
 
 two:
   email: 'two@example.com'

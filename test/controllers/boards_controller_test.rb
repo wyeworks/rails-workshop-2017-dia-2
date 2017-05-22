@@ -14,8 +14,10 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_board_url
-    assert_response :success
+    VCR.use_cassette("trello_api") do
+      get new_board_url
+      assert_response :success
+    end
   end
 
   test "should create board" do

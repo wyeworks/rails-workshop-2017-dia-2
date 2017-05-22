@@ -18,18 +18,20 @@ class BoardsTest < ApplicationSystemTestCase
   end
 
   test "creating a new board" do
-    visit boards_url
+    VCR.use_cassette("trello_api") do
+      visit boards_url
 
-    click_on "Create new board..."
+      click_on "Create new board..."
 
-    fill_in "Name", with: "My Board"
-    select "Private", from: "Visibility"
-    check "Favorite"
+      fill_in "Name", with: "My Board"
+      select "Private", from: "Visibility"
+      check "Favorite"
 
-    click_on "Create Board"
+      click_on "Create Board"
 
-    assert_selector "h3", text: "My Board"
-    assert_selector "span.label", text: "private"
+      assert_selector "h3", text: "My Board"
+      assert_selector "span.label", text: "private"
+    end
   end
 
   test "creating a list and the first card" do
